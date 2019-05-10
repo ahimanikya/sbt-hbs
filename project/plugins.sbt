@@ -1,8 +1,6 @@
 resolvers += Resolver.sbtPluginRepo("releases")
 
-libraryDependencies ++= Seq(
-  "org.scala-sbt" % "scripted-plugin" % sbtVersion.value
-)
+libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % "1.2.8"
 
 addSbtPlugin("me.lessis" % "bintray-sbt" % "0.5.4")
 
