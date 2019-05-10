@@ -9,7 +9,7 @@ To use this plugin use the addSbtPlugin command within your project's `plugins.s
 ```scala
 resolvers += Resolver.sbtPluginRepo("releases")
 
-addSbtPlugin("com.bicou.sbt" % "sbt-hbs" % "1.0.2")
+addSbtPlugin("com.bicou.sbt" % "sbt-hbs" % "1.0.5")
 ```
 
 Your project's build file also needs to enable sbt-web plugins. For example with `build.sbt`:
@@ -28,7 +28,7 @@ Or locally in your project with a `package.json` file:
 ```json
 {
   "devDependencies": {
-    "handlebars": "~2"
+    "handlebars": "^3.0.0"
   }
 }
 ```
@@ -41,14 +41,14 @@ Option           | Description                                                  
 `amd`            | When set, generates JavaScript with the [AMD wrapper]                  | `false`
 `commonjs`       | Exports CommonJS style, path to Handlebars module                      | `""`
 `handlebarPath`  | Path to handlebar.js (only valid for amd-style)                        | `""`
-`min`            | Minimize output                                                        | `false`
 `known`          | Known helpers                                                          | `[]`
 `knownOnly`      | Known helpers only                                                     | `false`
-`namespace`      | Template namespace                                                     | `"Handlebars.templates"`
+`namespace`      | Template namespace                                                     | `""`
 `root`           | Template root (base value that will be stripped from template names)   | `""`
 `data`           | Include data when compiling                                            | `false`
 `bom`            | Removes the BOM (Byte Order Mark) from the beginning of the templates  | `false`
 `simple`         | Output template function only                                          | `false`
+`map`            | Generates source maps                                                  | `false`
 
 
 The following sbt code illustrates how to generate templates with AMD wrapper 
@@ -60,13 +60,13 @@ HbsKeys.amd := true
 Usage
 -----
 
-Once configured, any `*.hbs` or `*.handlebars` files placed in `app/assets` will be compiled to JavaScript code in `target/web/public`, the handlebars name is build from file path, relative to `root` option.
+Once configured, any `*.hbs` or `*.handlebars` files placed in `src/main/assets` will be compiled to JavaScript code in `target/web/public`, the handlebars name is build from file path, relative to `root` option.
 
 For example the name of the template located in `app/assets/javascripts/templates/index.hbs` will be `javascripts/templates/index`, unless you set `HbsKeys.root := "javascripts/templates/"` then it will be `index` (it's the handlebars id, not the javascript path).
 
 If a file name begins with an underscore, it will be handled as a partial.
 
-Don't forget to include the handlebars runtime to your public javascripts, you can grab a copy in `node_modules/handlebars/dist/handlebars.runtime.js`.
+Don't forget to include the handlebars runtime via `"org.webjars" % "handlebars" % "3.0.0-1"` or by copying/linking in your public javascripts (`node_modules/handlebars/dist/handlebars.runtime.js` with npm).
 
 Example
 -------
