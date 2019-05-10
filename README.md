@@ -9,7 +9,7 @@ To use this plugin use the addSbtPlugin command within your project's `plugins.s
 ```scala
 resolvers += Resolver.sbtPluginRepo("releases")
 
-addSbtPlugin("com.bicou.sbt" % "sbt-hbs" % "1.0.5")
+addSbtPlugin("com.bicou.sbt" % "sbt-hbs" % "1.0.6")
 ```
 
 Your project's build file also needs to enable sbt-web plugins. For example with `build.sbt`:
@@ -28,7 +28,7 @@ Or locally in your project with a `package.json` file:
 ```json
 {
   "devDependencies": {
-    "handlebars": "^3.0.0"
+    "handlebars": "^4.1.2"
   }
 }
 ```
