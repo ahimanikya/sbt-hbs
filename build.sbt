@@ -1,4 +1,3 @@
-import bintray.Keys._
 
 sbtPlugin := true
 
@@ -18,17 +17,15 @@ addSbtPlugin("com.typesafe.sbt" %% "sbt-js-engine" % "1.2.3")
 
 publishMavenStyle := false
 
-bintraySettings
-
-repository in bintray := "sbt-plugins"
-
-bintrayOrganization in bintray := None
-
+bintrayOrganization := None
+bintrayRepository := "sbt-plugins"
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
-scriptedSettings
+
+scriptedLaunchOpts := { 
+  Seq("-Dproject.version=" + version.value)
+}
 
 scriptedBufferLog := false
 
-scriptedLaunchOpts += ("-Dproject.version=" + version.value )
 
