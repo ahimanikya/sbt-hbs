@@ -15,6 +15,8 @@ libraryDependencies ++= Seq(
 
 addSbtPlugin("com.typesafe.sbt" %% "sbt-js-engine" % "1.2.3")
 
+enablePlugins(ScriptedPlugin)
+
 publishMavenStyle := false
 
 bintrayOrganization := None

@@ -1,4 +1,4 @@
-> web-stage
+> webStage
 $ exists target/web/stage/test.js
 $ exists target/web/stage/test.map
 > check
